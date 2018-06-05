@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Teams</title>
+
+    <style>
+        #mainContainer {
+            width: 65%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10%;
+        }
+
+        #heading{
+            float: left;
+        }
+
+        #newImg{
+            float: right;
+        }
+    </style>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div id="mainContainer">
+
+    <h3 id="heading">Teams Detail: </h3>
+    <a id="newImg" href="#"><img height="80px" width="80px" th:src="@{/images/new_4.png}"/></a>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">
+                Team Name
+            </th>
+            <th scope="col">
+                City
+            </th>
+            <th scope="col">
+                Mascot
+            </th>
+            <th scope="col">
+                # of Players
+            </th>
+            <th scope="col">
+                Home Uniform
+            </th>
+            <th scope="col">
+                Visit Uniform
+            </th>
+            <th scope="col">
+                # of Home matches
+            </th>
+            <th scope="col">
+                # of Away Matches
+            </th>
+            <th scope="col">
+                Edit
+            </th>
+            <th scope="col">
+                Delete
+            </th>
+        </tr>
+        </thead>
+        <tr th:each="team : ${teams}">
+            <th th:text="${team.name}">
+                Team Name
+            </th>
+            <th th:text="${team.city}">
+                City
+            </th>
+            <th th:text="${team.mascot}">
+                Mascot
+            </th>
+            <th th:text="${team.getPlayers().size()}">
+                # of Players
+            </th>
+            <th th:text="${team.homeUniform}">
+                Home Uniform
+            </th>
+            <th th:text="${team.visitUniform}">
+                Visit Uniform
+            </th>
+            <th th:text="${team.getMatchesAsHome().size()}">
+                # of Home matches
+            </th>
+            <th th:text="${team.getMatchesAsVisitor().size()}">
+                # of Away Matches
+            </th>
+            <th>
+                <a href="#" th:href="@{'/editTeam/' + ${team.teamKey}}"><img height="23px" width="23px" th:src="@{/images/Edit-validated-icon.png}"/></a>
+            </th>
+            <th>
+                <a href="#" th:href="@{'/deleteTeam/' + ${team.teamKey}}"><img height="23px" width="23px" th:src="@{/images/Delete_Icon.png}"/></a>
+            </th>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

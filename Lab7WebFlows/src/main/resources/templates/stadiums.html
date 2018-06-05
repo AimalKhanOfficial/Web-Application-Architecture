@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Stadiums</title>
+
+    <style>
+        #mainContainer {
+            width: 65%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10%;
+        }
+
+        #heading{
+            float: left;
+        }
+
+        #newImg{
+            float: right;
+        }
+    </style>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div id="mainContainer">
+
+    <h3 id="heading">Stadiums Detail: </h3>
+    <a id="newImg" href="#"><img height="80px" width="80px" th:src="@{/images/new_4.png}"/></a>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">
+                Stadium Name
+            </th>
+            <th scope="col">
+                City
+            </th>
+            <th scope="col">
+                State
+            </th>
+            <th scope="col">
+                # of Matches
+            </th>
+            <th scope="col">
+                Edit
+            </th>
+            <th scope="col">
+                Delete
+            </th>
+        </tr>
+        </thead>
+        <tr th:each="stadium : ${stadiums}">
+            <th th:text="${stadium.name}">
+                Stadium Name
+            </th>
+            <th th:text="${stadium.city}">
+                City
+            </th>
+            <th th:text="${stadium.state}">
+                State
+            </th>
+            <th th:text="${stadium.getMatches().size()}">
+                # of Matches
+            </th>
+            <th>
+                <a href="#" th:href="@{'/editStadium/' + ${stadium.stadiumKey}}"><img height="23px" width="23px" th:src="@{/images/Edit-validated-icon.png}"/></a>
+            </th>
+            <th>
+                <a href="#" th:href="@{'/deleteStadium/' + ${stadium.stadiumKey}}"><img height="23px" width="23px" th:src="@{/images/Delete_Icon.png}"/></a>
+            </th>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

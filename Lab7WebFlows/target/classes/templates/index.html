@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+
+    <style>
+        #mainContainer{
+            width: 50%;
+            margin-left: 40%;
+            margin-right: 25%;
+            margin-top: 15%;
+        }
+
+        #teamDiv{
+            width: 20%;
+            border: 1px solid black;
+            background-color: grey;
+            color: white;
+            height: 40px;
+            float: left;
+        }
+
+        #teamDiv:hover{
+            background-color: darkgray;
+        }
+
+        #stadiumDiv:hover{
+            background-color: darkgray;
+        }
+
+        #stadiumDiv{
+            margin-left: 25%;
+            height: 40px;
+            width: 20%;
+            border: 1px solid black;
+            background-color: grey;
+            color: white;
+        }
+
+        .content{
+            text-align: center;
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="mainContainer">
+        <h3>Select an Option:</h3>
+        <div id="teamDiv">
+            <p class="content">
+                <a th:href="@{/teams}" >Team</a>
+            </p>
+        </div>
+        <div id="stadiumDiv">
+            <p class="content">
+                <a th:href="@{/stadiums}">Stadium</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
