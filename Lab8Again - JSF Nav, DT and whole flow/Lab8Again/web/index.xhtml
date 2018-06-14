@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet library="css" name="table.css"/>
+    <h:outputScript library="js" name="jquery.min.js"/>
+    <h:outputScript library="js" name="index.js"/>
+</h:head>
+<h:body>
+    <f:view>
+        <h:dataTable id="accounts"
+                     value="#{accounts.accountServiceList}"
+                     var="account"
+                     styleClass="order-table"
+                     headerClass="order-table-header"
+                     rowClasses="order-table-odd-row,order-table-even-row">
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Acc #"/>
+                </f:facet>
+                <h:outputText value="#{account.accountnumber}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Acc Holder"/>
+                </f:facet>
+                <h:outputText value="#{account.customer.name}"/>
+            </h:column>
+        </h:dataTable>
+        <hr/>
+        <h:link outcome="deposit" value="Create Account"/>
+    </f:view>
+</h:body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet library="css" name="jquery.dataTables.min.css"/>
+    <h:outputStylesheet library="css" name="buttons.dataTables.min.css"/>
+    <h:outputScript library="js" name="jquery-3.3.1.js"/>
+    <h:outputScript library="js" name="index.js"/>
+
+    <h:outputScript library="js" name="jquery.dataTables.min.js"/>
+    <h:outputScript library="js" name="dataTables.buttons.min.js"/>
+    <h:outputScript library="js" name="buttons.flash.min.js"/>
+    <h:outputScript library="js" name="jszip.min.js"/>
+    <h:outputScript library="js" name="pdfmake.min.js"/>
+    <h:outputScript library="js" name="vfs_fonts.js"/>
+    <h:outputScript library="js" name="buttons.html5.min.js"/>
+    <h:outputScript library="js" name="buttons.print.min.js"/>
+</h:head>
+<h:body>
+    <f:view>
+        <h:dataTable id="example"
+                     value="#{accounts.accountServiceList}"
+                     var="account"
+                     styleClass="display nowrap"
+                     style="width:100%">
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Acc #"/>
+                </f:facet>
+                <h:outputText value="#{account.accountnumber}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Acc Holder"/>
+                </f:facet>
+                <h:outputText value="#{account.customer.name}"/>
+            </h:column>
+        </h:dataTable>
+        <hr/>
+        <h:link outcome="deposit" value="Create Account"/>
+    </f:view>
+</h:body>
+</html>

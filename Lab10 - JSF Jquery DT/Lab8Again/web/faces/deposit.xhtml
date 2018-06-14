@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+<h:head>
+    <h:outputStylesheet library="css" name="table.css" />
+    <h:outputScript library="js" name="jquery.min.js"/>
+    <h:outputScript library="js" name="index.js"/>
+</h:head>
+<f:view>
+    <h:outputText value="Acc Deposit"/>
+    <h:messages style="color:red"></h:messages>
+    <h:form>
+        <h:inputHidden value="#{accounts.depositAmtAccNum}"></h:inputHidden>
+        <br/>
+        <h:inputText id="depositAmt" value="#{accounts.depositAmt}" required="true">
+            <f:validator validatorId="AmountValidator" />
+        </h:inputText>
+        <h:message for="depositAmt" style="color:red" />
+        <br/><br/>
+        <h:commandButton value="Create Account" action="#{accounts.depositAmount}"/>
+    </h:form>
+</f:view>
+</html>
